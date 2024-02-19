@@ -1,4 +1,8 @@
-# README
+# private-events
+
+A site similar to a private Eventbrite which allows users to create events and then manage user signups.
+
+This project is part of The Odin Project course. Link to the lesson [here](https://www.theodinproject.com/lessons/ruby-on-rails-private-events)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
