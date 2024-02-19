@@ -1,0 +1,20 @@
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<h1>Create new event</h1>
+<%= form_with model: @event, local: true do |f|%>
+  <%= f.label :name, 'Event name:' %>
+  <%= f.text_field :name %>
+  <%= f.label :date, 'Event date:' %>
+  <%= f.date_field :date %>
+  <%= f.label :place, 'Event place:' %>
+  <%= f.text_field :place %>
+  <%= f.submit 'Submit' %>
+<% end %>

@@ -1,0 +1,11 @@
+<%= link_to  "Index", events_path %>
+<h1>My Events</h1>
+<div>
+  <ul>
+    <% @my_events.each do |event| %>
+      <li>
+        <%= link_to event.name, event_path(event) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
