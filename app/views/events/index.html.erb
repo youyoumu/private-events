@@ -5,13 +5,28 @@
 <% else %>
   <%= link_to  "Sign in", new_user_session_path %> or <%= link_to  "Sign up", new_user_registration_path %>
 <% end %>
-<h1>Events</h1>
-<div>
-  <ul>
-    <% @events.each do |event| %>
-      <li>
-        <%= link_to event.name, event_path(event) %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<h1>Events list</h1>
+<h2> Today's events </h2>
+<ul>
+  <% @events_today.each do |event| %>
+    <li>
+      <%= link_to event.name, event_path(event) %>
+    </li>
+  <% end %>
+</ul>
+<h2> Future events </h2>
+<ul>
+  <% @events_future.each do |event| %>
+    <li>
+      <%= link_to event.name, event_path(event) %>
+    </li>
+  <% end %>
+</ul>
+<h2> Past events </h2>
+<ul>
+  <% @events_past.each do |event| %>
+    <li>
+      <%= link_to event.name, event_path(event) %>
+    </li>
+  <% end %>
+</ul>
