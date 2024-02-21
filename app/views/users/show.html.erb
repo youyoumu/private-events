@@ -1,4 +1,9 @@
 <%= link_to  "Index", events_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Create event', new_event_path %>
+  <%= link_to  "Sign out", destroy_user_session_path %>
+  <%= link_to  "Profile", user_path(current_user) %>
+<% end %>
 <h1>My Events</h1>
 <div>
   <ul>
@@ -9,7 +14,7 @@
     <% end %>
   </ul>
 </div>
-<h3>Attended events</h3>
+<h2>Attended events</h2>
 <ul>
   <% current_user.attended_events.each do |event| %>
     <li> <%= link_to event.name, event_path(event) %> </li>

@@ -1,14 +1,15 @@
 <%= link_to  "Index", events_path %>
 <%= link_to 'Create event', new_event_path %>
 <% if user_signed_in? %>
+  <%= link_to  "Sign out", destroy_user_session_path %>
   <%= link_to  "Profile", user_path(current_user) %>
 <% end %>
 <h1>
   <%= @event.name %>
 </h1>
-<h6>Date</h6>
+<h2>Date</h2>
 <%= @event.date %>
-<h6>Place</h6>
+<h2>Place</h2>
 <%= @event.place %>
 <%= form_with url: '/join', method: :post do |f|%>
   <%= f.hidden_field :event_id, value: @event.id %>
