@@ -15,15 +15,18 @@ class Event < ApplicationRecord
   has_many :event_attendees
   has_many :attendees, through: :event_attendees, source: :attendee
 
-  def self.future
-    self.where('date > ?', Date.current)
-  end
+  # def self.future
+  #   self.where('date > ?', Date.current)
+  # end
+  scope :future, -> { where('date > ?', Date.current) }
 
-  def self.past
-    self.where('date < ?', Date.current).or(self.where(date: nil))
-  end
+  # def self.past
+  #   self.where('date < ?', Date.current).or(self.where(date: nil))
+  # end
+  scope :past, -> { where('date < ?', Date.current).or(self.where(date: nil)) }
 
-  def self.today
-    self.where('date == ?', Date.current)
-  end
+  # def self.today
+  #   self.where('date == ?', Date.current)
+  # end
+  scope :today, -> { where('date == ?', Date.current) }
 end
