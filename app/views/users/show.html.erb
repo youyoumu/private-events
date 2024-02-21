@@ -15,8 +15,29 @@
   </ul>
 </div>
 <h2>Attended events</h2>
+<h3> Today's events</h3>
 <ul>
   <% current_user.attended_events.each do |event| %>
-    <li> <%= link_to event.name, event_path(event) %> </li>
+    <% next if event.date.nil? %>
+    <% if event.date == Date.current %>
+      <li> <%= link_to event.name, event_path(event) %> </li>
+    <% end %>
+  <% end %>
+</ul>
+<h3> Future events </h3>
+<ul>
+  <% current_user.attended_events.each do |event| %>
+    <% next if event.date.nil? %>
+    <% if event.date > Date.current %>
+      <li> <%= link_to event.name, event_path(event) %> </li>
+    <% end %>
+  <% end %>
+</ul>
+<h3> Past events</h3>
+<ul>
+  <% current_user.attended_events.each do |event| %>
+    <% if event.date.nil? || (event.date < Date.current) %>
+      <li> <%= link_to event.name, event_path(event) %> </li>
+    <% end %>
   <% end %>
 </ul>
